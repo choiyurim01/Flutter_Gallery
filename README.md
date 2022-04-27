@@ -1,6 +1,23 @@
-# Flutter Gallery의 ui이 따라해보기
+## Flutter Gallery의 ui이 따라해보기
 > 참고 링크 : https://gallery.flutter.dev/#/
-
-
-
+.
+.
+.
 ### 01.Appbar
+.
+### 02.Button
+> * TextButton : 텍스트 버튼
+> * ElevatedButton : 돌출 버튼
+> * OutlineButton : 윤곽 버튼
+> * FloatingActionButton : 플로팅 작업 버튼
+```
+// Overflowed By ???Pixels 오류시 "resizeToAvoidBottomlnset : false"추가하고 body를 SingleChildScrollView로 감싼다.
+  home: Scaffold(
+    resizeToAvoidBottomlnset : false,
+    appBar: AppBar(
+      title: Text('Appbar')
+      ),
+    body: SingleChildScrollView(
+      child : AppbarPage
+    )),
+```
