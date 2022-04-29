@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Dialog());
+void main() => runApp(const Textform());
 
-class Dialog extends StatelessWidget {
-  const Dialog({Key? key}) : super(key: key);
+class Textform extends StatelessWidget {
+  const Textform({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
