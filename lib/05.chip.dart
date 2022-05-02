@@ -133,7 +133,7 @@ class _ChipsPageState extends State<ChipsPage>
                       isSelectedFireplace.value = !isSelectedFireplace.value;
                     });
                   },
-              ),
+                ),
               ],
             ),
             space,
