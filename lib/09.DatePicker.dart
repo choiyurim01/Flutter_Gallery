@@ -1,29 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const dialog());
+void main() => runApp(const Date());
 
-class dialog extends StatelessWidget {
-  const dialog({Key? key}) : super(key: key);
+class Date extends StatelessWidget {
+  const Date({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: '알림상자',
+      title: '날짜설정',
       debugShowCheckedModeBanner: false,
-      home: dialogPage(),
+      home: DatePage(),
     );
   }
 }
 
-class dialogPage extends StatefulWidget {
-  const dialogPage({Key? key}) : super(key: key);
+class DatePage extends StatefulWidget {
+  const DatePage({Key? key}) : super(key: key);
 
   @override
-  State<dialogPage> createState() => _dialogPageState();
+  State<DatePage> createState() => _DatePageState();
 }
 
-class _dialogPageState extends State<dialogPage> {
+class _DatePageState extends State<DatePage> {
+
   @override
 
   var space = SizedBox(height: 30);
@@ -31,65 +32,45 @@ class _dialogPageState extends State<dialogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('알림상자'),
+        title: const Text('날짜설정'),
       ),
 
       body: Center(
-        //mainAxisSize: MainAxisSize.min,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            ElevatedButton(
+                child: Text('Date Picker'),
+                onPressed: () {
+                  Future<DateTime?> selected = showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2012),
+                      lastDate: DateTime(2032),
+                    builder: (BuildContext context, child) {
+                        return Theme(
+                            data: ThemeData.light(),
+                            child: child!
+                        );
+                    }
+                  );
+                  selected.then((dateTime) {
+                    setState(() {
+                    });
+                  });
+                }),
             space,
             ElevatedButton(
-              child: Text('테스트1'),
+              child: Text('Time Picker'),
               onPressed: () {
-                showDialog(
+                Future<TimeOfDay?> selectedTime = showTimePicker(
                     context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('제목'),
-                        titleTextStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 20),
-                        backgroundColor: Colors.grey[100],
-                        actions: [
-                          ElevatedButton(
-                              onPressed: () {},
-                              child: Text('확인')
-                          ),
-                          ElevatedButton(
-                              onPressed: () {}, child: Text('취소'))
-                        ],
-                        content: Text('내용입니다.'),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                      );
-                    });
-              },
-            ),
-            // space,
-            // ElevatedButton(
-            //   child: const Text('테스트2'),
-            //   onPressed: () {
-            //     CupertinoAlertDialog(
-            //       title: const Text('제목'),
-            //       content: const Text('내용입니다.'),
-            //       actions: [
-            //         CupertinoDialogAction(
-            //             child: const Text('이전'),
-            //           onPressed: () {},
-            //         ),
-            //         CupertinoDialogAction(
-            //           child: const Text('다음'),
-            //           onPressed: () {},
-            //         )
-            //       ],
-            //     );
-            //   },
-            // ),
+                    initialTime: TimeOfDay.now(),
+                );
+                selectedTime.then((timeOfDay) {
+                });
+              })
           ],
         ),
       )
