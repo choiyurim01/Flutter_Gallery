@@ -30,9 +30,15 @@ class _MenuPageState extends State<MenuPage> {
       appBar: AppBar(
         title: const Text('섹션으로 구분된 메뉴'),
         actions: [
-          PopupMenuButton(onSelected: (value) {
+          PopupMenuButton(
+            tooltip: '더보기',
+            padding: EdgeInsets.all(5),
+            color: Colors.lightBlue[50],
+            onSelected: (value) {
+              print('$value');
             setState( () { seletedItem = value.toString(); } );
           },
+            onCanceled: () {print('onCanceled');},
             itemBuilder: (context) {
             return <PopupMenuEntry<String>>[
               PopupMenuItem(
