@@ -28,20 +28,38 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('컨텍스트 메뉴'),
+        title: const Text('섹션으로 구분된 메뉴'),
         actions: [
           PopupMenuButton(onSelected: (value) {
             setState( () { seletedItem = value.toString(); } );
           },
-            itemBuilder: (BuildContext) {
-            return const [
+            itemBuilder: (context) {
+            return <PopupMenuEntry<String>>[
               PopupMenuItem(
-                  child: Text('활성화'),
-                value:'/활성화'),
+                  child:ListTile(
+                    leading: Icon(Icons.remove_red_eye_sharp),
+                    title: Text('미리보기'),
+                  ),
+                value:'/미리보기'),
               PopupMenuItem(
-                enabled: false,
-                  child: Text('비활성화'),
-                  value:'/비활성화'),
+                  child:ListTile(
+                    leading: Icon(Icons.person_add),
+                    title: Text('공유'),
+                  ),
+                  value:'/공유'),
+              PopupMenuItem(
+                  child:ListTile(
+                    leading: Icon(Icons.link),
+                    title: Text('링크생성'),
+                  ),
+                  value:'/링크생성'),
+              PopupMenuDivider(),
+              PopupMenuItem(
+                  child:ListTile(
+                    leading: Icon(Icons.delete),
+                    title: Text('삭제'),
+                  ),
+                  value:'/삭제'),
             ];
           },
           )
