@@ -36,8 +36,14 @@
 * Positioned : Stack 내부에서 위치 설정 가능.
 
 * MediaQuery : 화면의 크기를 얻을 수 있는 클래스(기종에 따라 화면 크기가 다르기 때문.)
- - MediaQuery.of(context).size             앱 화면의 크기
- - MediaQuery.of(context).size.height      앱 화면의 높이
- - MediaQuery.of(context).size.width       앱 화면의 넓이
- - MediaQuery.of(context).devicePixeRatio  화면 배율
- - MediaQuery.of(context).padding.top      상단 상태 표시줄 높이
+> MediaQuery.of(context).size             앱 화면의 크기
+> MediaQuery.of(context).size.height      앱 화면의 높이
+> MediaQuery.of(context).size.width       앱 화면의 넓이
+> MediaQuery.of(context).devicePixeRatio  화면 배율
+> MediaQuery.of(context).padding.top      상단 상태 표시줄 높이
+
+* EdgeInsets : padding, margin처럼 여백 지정.
+> EdgeInsets.all          전체 여백을 동일하게 지정.
+> EdgeInsets.only         특정영역에만 여백 지정.
+> EdgeInsets.fromLTRB     순서대로 왼쪽, 위, 오른쪽, 아래 순으로 지정.
+> EdgeInsets.symmetric()  symmetric은 대칭적이라는 뜻으로 horizontal은 수평, vertical 수직
